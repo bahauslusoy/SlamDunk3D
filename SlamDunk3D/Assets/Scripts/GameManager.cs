@@ -7,6 +7,16 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+
+    enum State
+    {
+        preGame,
+
+        inGame,
+
+    }
+    private State _currentState = State.preGame;
+
     public GameObject platform;
     public GameObject basket;
     public GameObject increaseBasket;
@@ -18,9 +28,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioSource[] sounds;
     [SerializeField] private ParticleSystem[] effects;
-    [SerializeField] private TextMeshProUGUI  levelNumber;
+    [SerializeField] private TextMeshProUGUI levelNumber;
 
     public GameObject startPanel, failPanel, successPanel;
+
+    float horSpeed;
+    Vector3 endPos, FirstPos;
 
 
 
@@ -28,28 +41,74 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        levelNumber.text = "LEVEL:"  + SceneManager.GetActiveScene().name ;
+        levelNumber.text = "LEVEL:" + SceneManager.GetActiveScene().name;
+        startPanel.SetActive(true);
+
 
         for (int i = 0; i < requiredThrowBall; i++)
         {
             missions[i].gameObject.SetActive(true);
         }
+
+        Time.timeScale = 0;
         // Invoke("IncreaseBasketItem",3f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        switch (_currentState)
         {
-            platform.transform.position = Vector3.Lerp(platform.transform.position, new Vector3(platform.transform.position.x - 0.3f,
-            platform.transform.position.y, platform.transform.position.z), 0.1f);
+            case State.preGame:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Time.timeScale = 1;
+
+
+                    startPanel.SetActive(false);
+
+                    _currentState = State.inGame;
+
+
+                }
+
+                break;
+
+            case State.inGame:
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    FirstPos = Input.mousePosition;
+                }
+                else if (Input.GetMouseButton(0))
+                {
+                    endPos = Input.mousePosition;
+
+                    float differenceX = (((endPos.x - FirstPos.x) * Time.deltaTime) * 1080 / Screen.width) * horSpeed;
+
+                    horSpeed = 0.01f;
+                    var currentPosition = platform.transform.position;
+                    var targetPosition = new Vector3(currentPosition.x + differenceX, currentPosition.y, currentPosition.z);
+                    platform.transform.position = targetPosition;
+                }
+
+
+                break;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            platform.transform.position = Vector3.Lerp(platform.transform.position, new Vector3(platform.transform.position.x + 0.3f,
-            platform.transform.position.y, platform.transform.position.z), 0.1f);
-        }
+
+
+        // for Keyboard
+
+        /* if (Input.GetKey(KeyCode.LeftArrow))
+         {
+             platform.transform.position = Vector3.Lerp(platform.transform.position, new Vector3(platform.transform.position.x - 0.3f,
+             platform.transform.position.y, platform.transform.position.z), 0.1f);
+         }
+         else if (Input.GetKey(KeyCode.RightArrow))
+         {
+             platform.transform.position = Vector3.Lerp(platform.transform.position, new Vector3(platform.transform.position.x + 0.3f,
+             platform.transform.position.y, platform.transform.position.z), 0.1f);
+         }*/
     }
 
     public void Basket(Vector3 poz)
@@ -111,7 +170,7 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1 );
-        Time.timeScale = 1 ;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1;
     }
 }
