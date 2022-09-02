@@ -86,11 +86,14 @@ public class GameManager : MonoBehaviour
 
                     float differenceX = (((endPos.x - FirstPos.x) * Time.deltaTime) * 1080 / Screen.width) * horSpeed;
 
-                    horSpeed = 0.01f;
+                    horSpeed = 0.05f;
                     var currentPosition = platform.transform.position;
                     var targetPosition = new Vector3(currentPosition.x + differenceX, currentPosition.y, currentPosition.z);
                     platform.transform.position = targetPosition;
                 }
+
+                float Xpos = Mathf.Clamp(platform.transform.position.x,-1.62f, 1.62f);
+                platform.transform.position = new Vector3(Xpos, platform.transform.position.y,platform.transform.position.z);
 
 
                 break;
@@ -121,7 +124,7 @@ public class GameManager : MonoBehaviour
 
         if (basketNumber == requiredThrowBall)
         {
-
+            Win();
         }
         if (basketNumber == 1)
         {
@@ -157,8 +160,9 @@ public class GameManager : MonoBehaviour
     {
         sounds[2].Play();
         successPanel.SetActive(true);
-        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
         Time.timeScale = 0;
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        
 
 
     }

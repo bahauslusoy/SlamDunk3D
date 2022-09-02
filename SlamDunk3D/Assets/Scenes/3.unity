@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f6a38323dcb82a74eaf72e96356979e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f49268f35c08e7f47b7fac3836fdaef0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1356,7 +1356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092862716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.14, z: -0.94}
+  m_LocalPosition: {x: 0, y: 6.88, z: -0.94}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1700,6 +1700,9 @@ MonoBehaviour:
   increaseBasket: {fileID: 257945140}
   increaseBasketPoints:
   - {fileID: 1171081442}
+  - {fileID: 1171081442}
+  - {fileID: 1171081442}
+  - {fileID: 1171081442}
   missions:
   - {fileID: 2055061013}
   - {fileID: 132082967}
@@ -1708,7 +1711,7 @@ MonoBehaviour:
   - {fileID: 1214597267}
   - {fileID: 1255480482}
   missionComp: {fileID: 21300000, guid: 4426a5d4fb468774abde54dc02c83963, type: 3}
-  requiredThrowBall: 1
+  requiredThrowBall: 4
   sounds:
   - {fileID: 1171081448}
   - {fileID: 1171081447}
@@ -2410,15 +2413,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
       propertyPath: m_LocalScale.x
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.316
+      value: -0.91
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 5.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2452,13 +2455,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fcc49edd7c829446b5f39e4231a394a, type: 2}
     - target: {fileID: 919132149155446097, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
       propertyPath: m_Name
       value: Boru
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4bf718fd90f8454b94300d0d8af89ba, type: 3}
@@ -2776,7 +2783,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f6a38323dcb82a74eaf72e96356979e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f49268f35c08e7f47b7fac3836fdaef0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5291,7 +5298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8354828854934009855, guid: d57190c9066e1934388be024e922224e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.8
+      value: 5.51
       objectReference: {fileID: 0}
     - target: {fileID: 8354828854934009855, guid: d57190c9066e1934388be024e922224e, type: 3}
       propertyPath: m_LocalPosition.z
