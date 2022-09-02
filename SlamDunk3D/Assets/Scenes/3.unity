@@ -1708,7 +1708,7 @@ MonoBehaviour:
   - {fileID: 1214597267}
   - {fileID: 1255480482}
   missionComp: {fileID: 21300000, guid: 4426a5d4fb468774abde54dc02c83963, type: 3}
-  requiredThrowBall: 3
+  requiredThrowBall: 1
   sounds:
   - {fileID: 1171081448}
   - {fileID: 1171081447}
